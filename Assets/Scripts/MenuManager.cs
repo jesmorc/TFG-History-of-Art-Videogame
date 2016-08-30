@@ -10,6 +10,9 @@ public class MenuManager : MonoBehaviour {
     [SerializeField]
     string pressButtonSound = "ButtonPress";
 
+    [SerializeField]
+    string backgroundMusic = "TitleMusic";
+
     AudioManager audioManager;
 
 
@@ -19,7 +22,9 @@ public class MenuManager : MonoBehaviour {
         if(audioManager == null)
         {
             Debug.LogError("No audio manager found");
-        }   
+        }
+
+        audioManager.PlaySound(backgroundMusic);
     }
 
 	public void StartGame()

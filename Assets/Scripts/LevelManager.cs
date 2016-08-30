@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour {
 	private int hitpoint = 3;
 	private int score = 0;
 
+    public GameObject cube;
+    public GameObject sphere;
 	public Transform spawnPosition;
 	public Transform playerTransform;
 
@@ -29,10 +31,18 @@ public class LevelManager : MonoBehaviour {
 			hitpoint--;
 			hitpointText.text = "Hitpoint : " + hitpoint.ToString ();
 			if (hitpoint <= 0) {
-				SceneManager.LoadScene ("Menu");
+				SceneManager.LoadScene ("MenuPrincipal");
 			}
 		}
-	}
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Debug.Log("HOLA");
+            this.playerTransform = sphere.GetComponent<Transform>();
+
+            
+        }
+    }
 
 	public void Win(){
 		//save game in registry

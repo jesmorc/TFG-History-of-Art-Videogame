@@ -11,7 +11,7 @@ public class SphereController : MonoBehaviour {
     public Transform groundCheck;
     float groundRadius = 0.2f;
     public LayerMask whatIsGround;
-    public float jumpForce = 300f;
+    public float jumpForce = 700f;
 
     
 
