@@ -31,7 +31,7 @@ namespace UnityStandardAssets._2D
         // Update is called once per frame
         private void Update()
         {
-            if (target == null)
+            if (target == null || target.gameObject.activeSelf == false)
             {
                 FindPlayer();
                 return;
@@ -70,7 +70,9 @@ namespace UnityStandardAssets._2D
                 GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
                 if (searchResult != null)
                 {
+                    Debug.Log("Target localizado");
                     target = searchResult.transform;
+                    
                 }
                 nextTimeToSearch = Time.time + 0.5f; //search for the player 2 times each second
             }

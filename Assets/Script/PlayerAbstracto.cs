@@ -10,15 +10,30 @@ public class PlayerAbstracto : MonoBehaviour {
 	private float gravity = 30.0f;
 	private float jumpForce = 10.0f;
 	private bool secondJumpAvail = false;
+    public int fallBoundary = -20;
 
-	private Vector3 moveVector;
+    private Vector3 moveVector;
 	private Vector3 lastMotion;
 	private CharacterController controller;
+    private AudioManager audioManager;
+    public string deathSoundName = "DeathVoice";
+    public string spawnAbstractSoundName = "SpawnAbstract";
 
-	// Use this for initialization
-	void Start () {
+    private const float minDistance = 2f;
+
+    private bool soundPlayed = false;
+
+
+    // Use this for initialization
+    void Start () {
 		controller = GetComponent<CharacterController> ();
-	}
+
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("Panic, no audio manager in scene");
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -51,14 +66,58 @@ public class PlayerAbstracto : MonoBehaviour {
 			moveVector.x = lastMotion.x;
 		}
 
+        if (transform.position.y <= fallBoundary)
+        {
+            transform.position = GameMaster.gm.transform.GetChild(0).position;
+            audioManager.PlaySound(spawnAbstractSoundName);
+        }
 
-		moveVector.y = verticalVelocity;
+        GameObject[] pepe = GameObject.FindGameObjectsWithTag("Triggersito");
+
+
+        for (int i = 0; i < pepe.Length; i++)
+        {
+
+            if ((transform.position - pepe[i].transform.position).sqrMagnitude <= minDistance * minDistance && !soundPlayed)
+            {
+                Debug.Log("PEPE");
+                audioManager.PlaySound(deathSoundName);
+                //soundPlayed = true;
+                Destroy(pepe[i]);
+
+            }
+            soundPlayed = false;
+        }
+
+            //DamagePlayer(9999999);
+
+
+        moveVector.y = verticalVelocity;
 		//moveVector = new Vector3 (inputDirection, verticalVelocity, 0);
 		controller.Move (moveVector * Time.deltaTime);
 		lastMotion = moveVector;
 	}
 
-	private bool IsControllerGrounded(){
+    public void DamagePlayer(int damage)
+    {
+        //stats.curHealth -= damage;
+        //if (stats.curHealth <= 0)
+        //{
+            //play death sound
+            audioManager.PlaySound(deathSoundName);
+
+            GameMaster.KillPlayer(transform);
+        //}
+        //else
+        //{
+            //play damage sound
+        //    audioManager.PlaySound(damageSoundName);
+        //}
+
+        //statusIndicator.SetHealth(stats.curHealth, stats.maxHealth);
+    }
+
+    private bool IsControllerGrounded(){
 		Vector3 leftRayStart;
 		Vector3 rightRayStart;
 
@@ -99,7 +158,7 @@ public class PlayerAbstracto : MonoBehaviour {
 		//Collectables
 		switch(hit.gameObject.tag){
 		case "Coin":
-			LevelManager.Instance.CollectCoin ();
+			//LevelManager.Instance.CollectCoin ();
 			Destroy (hit.gameObject);
 			break;
 		case "JumpPad":
@@ -110,7 +169,7 @@ public class PlayerAbstracto : MonoBehaviour {
 			transform.position = hit.transform.GetChild (0).position;
 			break;
 		case "Winbox":
-			LevelManager.Instance.Win ();
+			//LevelManager.Instance.Win ();
 			break;
 		default:
 			break;

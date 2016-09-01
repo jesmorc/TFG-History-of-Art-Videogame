@@ -39,14 +39,14 @@ public class SphereController : MonoBehaviour {
     void OnCollisionEnter(Collision collision)
     {
         SphereCollider d = rigi.GetComponent<SphereCollider>();
-        if (collision.gameObject == GameObject.FindGameObjectWithTag("Slippery"))
-        {
+        //if (collision.gameObject == GameObject.FindGameObjectWithTag("Slippery"))
+        //{
            
-        }
-        else
-        {
+        //}
+        //else
+        //{
             
-        }
+        //}
         //rigi.velocity = new Vector2(collision.relativeVelocity.y / Bouncibility, rigi.velocity.y);
     }
 

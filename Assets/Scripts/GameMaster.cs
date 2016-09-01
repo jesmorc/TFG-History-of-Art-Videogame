@@ -22,7 +22,8 @@ public class GameMaster : MonoBehaviour {
 	}
 
 	public Transform playerPrefab;
-	public Transform spawnPoint;
+    public Transform playerPrefab2;
+    public Transform spawnPoint;
 	public float spawnDelay = 2;
 	public Transform spawnPrefab;
     public string respawnCoundownSoundName = "RespawnCountdown";
@@ -51,6 +52,40 @@ public class GameMaster : MonoBehaviour {
             Debug.Log("No audio manager found!");
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("Transformacion!");
+            if(playerPrefab != null && playerPrefab2 != null) { 
+                if(playerPrefab.gameObject.activeSelf)
+                {
+                    playerPrefab2.position = playerPrefab.position;
+                    playerPrefab2.gameObject.SetActive(!playerPrefab2.gameObject.activeSelf);
+                    playerPrefab.gameObject.SetActive(false);
+                
+                    GameObject clone = Instantiate(spawnPrefab, playerPrefab.position, playerPrefab.rotation) as GameObject;
+                
+                    Destroy(clone, 3f);
+
+                    //Camera = GameObject.Find("Main Camera").GetComponent("SmoothLookAt");
+                    //lookAtScript.target = target;
+                }
+                else
+                {
+                    playerPrefab.position = playerPrefab2.position;
+                    playerPrefab.gameObject.SetActive(!playerPrefab.gameObject.activeSelf);
+                    playerPrefab2.gameObject.SetActive(false);
+                
+                    GameObject clone = Instantiate(spawnPrefab, playerPrefab2.position, playerPrefab2.rotation) as GameObject;
+                
+                    Destroy(clone, 3f);
+                }
+            }
+
+        }
+    }
 	
     public void EndGame()
     {
@@ -73,8 +108,23 @@ public class GameMaster : MonoBehaviour {
 
 	}
 
+    public static void KillPlayer(Transform player)
+    {
+        Destroy(player.gameObject);
+        //_remainingLives--;
+        //if (_remainingLives <= 0)
+        //{
+        //    gm.EndGame();
+        //}
+        //else
+        //{
+        gm.StartCoroutine(gm._RespawnPlayer());  //startCoRoutine cuz we used yield return 
+        //}
+        
 
-	public static void KillPlayer(PlayerRenacentismo player){
+    }
+
+    public static void KillPlayer(PlayerRenacentismo player){
 		Destroy (player.gameObject);
         _remainingLives--;
         if(_remainingLives <= 0)
