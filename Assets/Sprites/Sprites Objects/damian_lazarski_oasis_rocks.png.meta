@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: 0e32f98e418b96340bae44514a330ba4
+timeCreated: 1472917757
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: damian_lazarski_oasis_rocks_0
+    21300002: damian_lazarski_oasis_rocks_1
+    21300004: damian_lazarski_oasis_rocks_2
+    21300006: damian_lazarski_oasis_rocks_3
+    21300008: damian_lazarski_oasis_rocks_4
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: damian_lazarski_oasis_rocks_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 604
+        height: 302
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: -151}
+        - {x: 39, y: -131}
+        - {x: 82, y: -143}
+        - {x: 130, y: -138}
+        - {x: 226, y: -136}
+        - {x: 246, y: -140}
+        - {x: 267, y: -120}
+        - {x: 296, y: -88}
+        - {x: 299, y: -84}
+        - {x: 299, y: 1}
+        - {x: 290, y: 15}
+        - {x: 284, y: 75}
+        - {x: 264, y: 120}
+        - {x: 251, y: 132}
+        - {x: 212, y: 140}
+        - {x: 188, y: 144}
+        - {x: 139, y: 139}
+        - {x: 92, y: 151}
+        - {x: 11, y: 151}
+        - {x: -4, y: 149}
+        - {x: -28, y: 142}
+        - {x: -75, y: 142}
+        - {x: -77, y: 151}
+        - {x: -172, y: 151}
+        - {x: -178, y: 149}
+        - {x: -175, y: 144}
+        - {x: -166, y: 142}
+        - {x: -133, y: 141}
+        - {x: -116, y: 141}
+        - {x: -121, y: 134}
+        - {x: -126, y: 134}
+        - {x: -124, y: 134}
+        - {x: -122, y: 136}
+        - {x: -122, y: 137}
+        - {x: -125, y: 140}
+        - {x: -146, y: 140}
+        - {x: -174, y: 143}
+        - {x: -207, y: 143}
+        - {x: -267, y: 124}
+        - {x: -261, y: 80}
+        - {x: -276, y: 49}
+        - {x: -283, y: 33}
+        - {x: -286, y: 1}
+        - {x: -302, y: -7}
+        - {x: -302, y: -41}
+        - {x: -290, y: -64}
+        - {x: -289, y: -87}
+        - {x: -279, y: -106}
+        - {x: -237, y: -143}
+        - {x: -226, y: -151}
+        - {x: -211, y: -151}
+        - {x: -168, y: -142}
+        - {x: -130, y: -127}
+        - {x: -101, y: -149}
+        - {x: -87, y: -151}
+      - - {x: 295, y: -88}
+        - {x: 282, y: -103}
+        - {x: 282, y: -113}
+        - {x: 287, y: -113}
+        - {x: 296, y: -111}
+        - {x: 302, y: -103}
+        - {x: 302, y: -88}
+      - - {x: 298, y: 8}
+        - {x: 298, y: -3}
+        - {x: 301, y: -4}
+        - {x: 302, y: -4}
+        - {x: 302, y: 9}
+        - {x: 300, y: 9}
+      - - {x: 297, y: 10}
+        - {x: 300, y: 11}
+        - {x: 300, y: 14}
+        - {x: 297, y: 15}
+        - {x: 295, y: 13}
+      - - {x: -273, y: 94}
+        - {x: -271, y: 92}
+        - {x: -268, y: 93}
+        - {x: -268, y: 104}
+        - {x: -270, y: 106}
+        - {x: -273, y: 105}
+      - - {x: -245, y: 151}
+        - {x: -253, y: 150}
+        - {x: -259, y: 142}
+        - {x: -259, y: 132}
+        - {x: -208, y: 132}
+        - {x: -184, y: 142}
+        - {x: -184, y: 151}
+      - - {x: -73, y: 151}
+        - {x: -73, y: 148}
+        - {x: -66, y: 146}
+        - {x: -45, y: 146}
+        - {x: -40, y: 149}
+        - {x: -41, y: 151}
+      - - {x: -38, y: 151}
+        - {x: -39, y: 150}
+        - {x: -39, y: 147}
+        - {x: -36, y: 146}
+        - {x: -13, y: 146}
+        - {x: -12, y: 149}
+        - {x: -12, y: 151}
+    - name: damian_lazarski_oasis_rocks_1
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 295
+        width: 95
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: damian_lazarski_oasis_rocks_2
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 301
+        width: 30
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: damian_lazarski_oasis_rocks_3
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 301
+        width: 28
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    - name: damian_lazarski_oasis_rocks_4
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 50
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

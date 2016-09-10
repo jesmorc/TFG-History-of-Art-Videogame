@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UnityStandardAssets._2D
 {
@@ -67,14 +68,26 @@ namespace UnityStandardAssets._2D
         {
             if (nextTimeToSearch <= Time.time)
             {
-                GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+                //GameObject searchResult = GameObject.FindGameObjectWithTag("Player");
+                GameObject[] searchResult = SceneManager.GetActiveScene().GetRootGameObjects();
                 if (searchResult != null)
                 {
-                    Debug.Log("Target localizado");
-                    target = searchResult.transform;
+                    for (int i = 0; i < searchResult.Length; i++)
+                    {
+                        if (searchResult[i].tag == "Player" && searchResult[i].activeInHierarchy)
+                        {
+                            target = searchResult[i].transform;
+                            Debug.Log("Target encontrado: " + searchResult[i].name);
+                        }
+                            
+                    }
+                    
                     
                 }
                 nextTimeToSearch = Time.time + 0.5f; //search for the player 2 times each second
+
+                
+               
             }
         }
     }

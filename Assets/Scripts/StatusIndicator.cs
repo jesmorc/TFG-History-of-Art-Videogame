@@ -25,6 +25,17 @@ public class StatusIndicator : MonoBehaviour {
         float _value = (float)_cur / _max;
 
         healthBarRect.localScale = new Vector3(_value, healthBarRect.localScale.y, healthBarRect.localScale.z);
-        healthText.text = _cur + "/" + _max + " HP";
+        if (_value > 0.6)
+        {
+            healthBarRect.GetComponent<Image>().color = Color.green;
+        }else if (_value <= 0.6 && _value > 0.3)
+        {
+            healthBarRect.GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            healthBarRect.GetComponent<Image>().color = Color.red;
+        }
+        //healthText.text = _cur + "/" + _max + " HP";
     }
 }

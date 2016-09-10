@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class Sound
@@ -21,11 +22,19 @@ public class Sound
 
     private AudioSource source;
 
+    private float length;
+
     public void SetSource(AudioSource _source)
     {
         source = _source;
         source.clip = clip;
         source.loop = loop;
+        length = source.clip.length;
+    }
+
+    public float getLength()
+    {
+        return length;
     }
 
     public void Play()
@@ -33,11 +42,17 @@ public class Sound
         source.volume = volume * (1 + Random.Range(-randomVolume / 2f, randomVolume / 2f));
         source.pitch = pitch * (1 + Random.Range(-randomPitch / 2f, randomPitch / 2f));
         source.Play();
+        
     }
 
     public void Stop()
     {
         source.Stop();
+    }
+
+    public bool isPlaying()
+    {
+        return source.isPlaying;
     }
 
 }
@@ -75,7 +90,26 @@ public class AudioManager : MonoBehaviour
             sounds[i].SetSource(_go.AddComponent<AudioSource>());
         }
 
-        PlaySound("Music");
+        switch (SceneManager.GetActiveScene().name)
+        {
+            case "EscenaMuseo":
+                PlaySound("Music");
+                break;
+            case "EscenaAbstracta":
+                PlaySound("AbstractMusic");
+                break;
+            case "EscenaRenacimiento":
+                PlaySound("RenacimientoMusic");
+                break;
+            case "EscenaXilografia":
+                PlaySound("XiloMusic");
+                break;
+            default:
+                PlaySound("Music");
+                break;
+
+        }
+        
     }
 
     public void PlaySound(string _name)
@@ -107,5 +141,33 @@ public class AudioManager : MonoBehaviour
         // no sound with _name
         Debug.LogWarning("AudioManager: Sound not found in list, " + _name);
     }
+
+    public bool IsPlaying()
+    {
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].isPlaying())
+            {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    public float getCurrentAudioLength()
+    {
+        float length = 0f;
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (sounds[i].isPlaying() && sounds[i].name != "Music")
+            {
+                
+                length = sounds[i].getLength();
+            }
+        }
+        return length;
+    }
+
 
 }
