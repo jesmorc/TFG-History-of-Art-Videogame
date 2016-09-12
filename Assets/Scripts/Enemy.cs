@@ -44,6 +44,10 @@ public class Enemy : MonoBehaviour {
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player == null)
+            return;
 
         stats.Init();
 
@@ -57,7 +61,6 @@ public class Enemy : MonoBehaviour {
             Debug.LogError("No death particles reference on enemy");
         }
 
-        player = GameObject.FindGameObjectWithTag("Player");
         if(player.transform.position.x < this.transform.position.x)
         {
             m_FacingRight = true;
@@ -80,6 +83,9 @@ public class Enemy : MonoBehaviour {
 
     private void Flip()
     {
+        if (this.GetComponent<SpriteRenderer>() == null)
+            return;
+
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
         this.GetComponent<SpriteRenderer>().flipX = !this.GetComponent<SpriteRenderer>().flipX;
@@ -102,11 +108,9 @@ public class Enemy : MonoBehaviour {
 
     //unity function , every time collides with another object
     void OnCollisionEnter2D(Collision2D _colInfo)
-    {
-        
-        
-        
-        Debug.Log("FEOOOOO" + _colInfo.gameObject.name + _colInfo.gameObject.tag);
+    {           
+        if (_colInfo.gameObject.tag != "Player")
+            return;
 
         GameObject _papa = _colInfo.gameObject;
         
@@ -114,7 +118,7 @@ public class Enemy : MonoBehaviour {
         
         if (_papa != null)
         {
-            MainCharacterControllerShooter _papas = _papa.GetComponent<MainCharacterControllerShooter>();
+            MainCharacterController _papas = _papa.GetComponent<MainCharacterController>();
             if(!_papas != null) {
                 _papas.DamagePlayer(stats.damage);
                 DamageEnemy(9999999);

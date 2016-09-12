@@ -23,8 +23,9 @@ public class DumbEnemy : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-
         GameObject thePlayer = GameObject.Find("Character");
+        if (thePlayer == null)
+            return;
         float x_player = thePlayer.transform.position.x;
         float y_player = thePlayer.transform.position.y;
         float x_enemy = transform.position.x;
@@ -40,10 +41,7 @@ public class DumbEnemy : MonoBehaviour {
         else
         {
             myRigidbody.velocity = new Vector2(0, myRigidbody.velocity.y);
-        }
-
-       
-        
+        } 
     }
 
 

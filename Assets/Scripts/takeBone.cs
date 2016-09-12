@@ -2,8 +2,6 @@
 using System.Collections;
 
 public class takeBone : MonoBehaviour {
-    public GameObject character;
-
 	// Use this for initialization
 	void Start () {
 	
@@ -20,7 +18,7 @@ public class takeBone : MonoBehaviour {
         {
             Destroy(collider.gameObject);
 
-            character.GetComponent<MainCharacterController>().takeBone();
+            this.GetComponent<MainCharacterController>().takeBone();
         }
     }
 }

@@ -1,8 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MainCharacterController : MonoBehaviour
 {
+    [System.Serializable]
+    public class PlayerStats
+    {
+        public int maxHealth = 100;
+
+        private int _curHealth;
+        public int curHealth
+        {
+            get { return _curHealth; }
+            set { _curHealth = Mathf.Clamp(value, 0, maxHealth); }
+        }
+
+        public void Init()
+        {
+            curHealth = maxHealth;
+        }
+    }
+
+    private Transform spawnPosition;
+
+    public PlayerStats stats = new PlayerStats();
+
     private Rigidbody2D myRigidbody;
 
     public float jumpStrength = 15f;
@@ -23,17 +46,26 @@ public class MainCharacterController : MonoBehaviour
     public int numer_bones = 0;
     public int max_bones = 10;
     public bool menina_found;
+    public bool key_found = false;
 
     private bool can_uncrouch = true;
     private bool crouch = false;
-    public GameObject ink_attack_sprite;
-    public Transform position_ink_attack;
-
     private AudioManager audioManager;
 
+    public int fallBoundary = -20;
+
+    public string deathSoundName = "DeathVoice";
+    public string damageSoundName = "Grunt";
+
+    public bool able_to_run = true;
+
+
+    [SerializeField]
+    public LifeIndicator lifeIndicator;
 
     void Awake()
     {
+        //spawnPosition.position = gameObject.transform.position;
         animator = GetComponent<Animator>();
         audios = GetComponents<AudioSource>();
     }
@@ -47,14 +79,26 @@ public class MainCharacterController : MonoBehaviour
         {
             Debug.Log("No audio manager");
         }
+
+        stats.Init();
+
+        if (lifeIndicator == null)
+        {
+            //Debug.LogError("No life indicator referenced on Player");
+            lifeIndicator = GameObject.FindGameObjectWithTag("LifeIndicator").GetComponent<LifeIndicator>();
+            lifeIndicator.Reset();
+        }
+        else
+        {
+            lifeIndicator.SetHealth(stats.maxHealth);
+        }
+
     }
 
     //Se le llama cada cierto tiempo constante, 
     //porque el update normal, si nuestro pc es muy rápido, irá actualizando cada frame muy rápido
     void FixedUpdate()
     {
-
-
         if (Input.GetKey(KeyCode.LeftControl))
         {
             crouch = true;
@@ -67,15 +111,9 @@ public class MainCharacterController : MonoBehaviour
                 {
                     crouch = false;
                 }
-                else
-                {
-                    crouch = true;
-                }
-
             }
         }
         animator.SetBool("Crouch", crouch);
-
         if (running)
         {
             GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, GetComponent<Rigidbody2D>().velocity.y);
@@ -84,22 +122,20 @@ public class MainCharacterController : MonoBehaviour
         onFloor = Physics2D.OverlapCircle(floorChecker.position, radiusChecker, floorMask);
         animator.SetBool("isGrounded", onFloor);
 
-
         if (onFloor)
         {
             doubleJump = false;
         }
     }
-    void LateUpdate()
-    {
-
-
-    }
-
+    
 
     // Update is called once per frame
     void Update()
     {
+
+        if (transform.position.y <= fallBoundary)
+            DamagePlayer(9999999);
+
         float horizontal = Input.GetAxis("Horizontal");
         if (horizontal > 0 || horizontal < 0)
         {
@@ -120,10 +156,11 @@ public class MainCharacterController : MonoBehaviour
         }
 
         bool running_fast = Input.GetKey(KeyCode.LeftShift);
-        animator.SetBool("RunFast", running_fast);
+        if (able_to_run)
+            animator.SetBool("RunFast", running_fast);
         HandleMovement(horizontal, crouch, running_fast);
 
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if ((onFloor || !doubleJump) && !crouch)
             {
@@ -139,24 +176,45 @@ public class MainCharacterController : MonoBehaviour
             }
         }
 
-       if (Input.GetKeyDown(KeyCode.E))
+       if (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0))
       
         {
             //int randomSound = (int)Random.Range(0, audios.Length);
             //audios[randomSound].Play();
-            audioManager.PlaySound("Attack");
-            attack();
+            if (SceneManager.GetActiveScene().name != "EscenaXilografia")
+            {
+                audioManager.PlaySound("Attack");
+                attack();
+            }
         }
 
 
 
     }
 
+    public void DamagePlayer(int damage)
+    {
+        stats.curHealth -= damage;
+        if (stats.curHealth <= 0)
+        {
+            //play death sound
+            audioManager.PlaySound(deathSoundName);
+
+            GameMaster.KillPlayer(this.transform);
+        }
+        else
+        {
+            //play damage sound
+            audioManager.PlaySound(damageSoundName);
+        }
+
+        lifeIndicator.SetHealth(stats.curHealth);
+    }
 
     private void HandleMovement(float horizontal, bool crouch, bool running)
     {
         float mod = 1f;
-        if (running)
+        if (running && able_to_run)
         {
             mod *= 2;
         }
@@ -193,17 +251,13 @@ public class MainCharacterController : MonoBehaviour
     {
         is_attacking = true;
         animator.Play("character_attack");
-        if (m_FacingRight)
-        {
-            Instantiate(ink_attack_sprite, position_ink_attack.position, Quaternion.Euler(new Vector3(0, 0, 0f)));
-        }
-        else
-        {
-            Instantiate(ink_attack_sprite, position_ink_attack.position, Quaternion.Euler(new Vector3(0, 0, 180f)));
-        }
         is_attacking = false;
     }
 
+    public void setToSpawn()
+    {
+        transform.position = GameMaster.gm.transform.GetChild(0).position;
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
