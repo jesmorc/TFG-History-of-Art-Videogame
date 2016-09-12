@@ -26,6 +26,8 @@ public class GameMaster : MonoBehaviour {
 	public Transform playerPrefab;
     public Transform playerPrefab2;
     public Transform player2DPrefab;
+    public Transform playerPrefabXilo2D;
+    public Transform playerPrefabXilo;
     public Transform spawnPoint;
 	public float spawnDelay = 2;
 	public GameObject spawnPrefab;
@@ -64,6 +66,37 @@ public class GameMaster : MonoBehaviour {
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.F) && SceneManager.GetActiveScene().name == "EscenaXilografia")
+        {
+
+            if (playerPrefabXilo != null && playerPrefabXilo2D != null)
+            {
+
+                if (playerPrefabXilo.gameObject.activeSelf)
+                {
+
+                    playerPrefabXilo2D.gameObject.SetActive(!playerPrefabXilo2D.gameObject.activeSelf);
+                    playerPrefabXilo2D.position = playerPrefabXilo.position;
+
+                    playerPrefabXilo.gameObject.SetActive(false);
+
+                    GameObject clone = Instantiate(spawnPrefab, playerPrefab.position, playerPrefab.rotation) as GameObject;
+                    Destroy(clone, 3f);
+                }
+                else
+                {
+
+                    playerPrefabXilo.gameObject.SetActive(!playerPrefabXilo.gameObject.activeSelf);
+                    playerPrefabXilo.position = playerPrefabXilo2D.position;
+                    playerPrefabXilo2D.gameObject.SetActive(false);
+
+                    GameObject clone = Instantiate(spawnPrefab, playerPrefab2.position, playerPrefab2.rotation) as GameObject;
+                    Destroy(clone, 3f);
+                }
+            }
+
+        }
 
         if (Input.GetKeyDown(KeyCode.Q) && SceneManager.GetActiveScene().name == "EscenaAbstracta" && !player2DPrefab.gameObject.activeSelf)
         {
@@ -206,7 +239,16 @@ public class GameMaster : MonoBehaviour {
 
     public static void KillPlayer(Transform player)
     {
+        if (SceneManager.GetActiveScene().name == "EscenaRenacimiento")
+        {
+            player.gameObject.GetComponent<MainCharacterController>().setToSpawn();
+            player.gameObject.GetComponent<MainCharacterController>().stats.curHealth = 100;
+            player.gameObject.GetComponent<MainCharacterController>().lifeIndicator.Reset();
+            player.gameObject.GetComponent<MainCharacterController>().lifeIndicator.SetHealth(100);
+            return;
+        }
         Destroy(player.gameObject);
+
         //_remainingLives--;
         //if (_remainingLives <= 0)
         //{

@@ -95,7 +95,7 @@ public class MainCharacterControllerShooter : MonoBehaviour
     {
 
         
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             crouch = true;
         }
@@ -157,7 +157,7 @@ public class MainCharacterControllerShooter : MonoBehaviour
             //NotificationCenter.DefaultCenter().PostNotification(this, "PersonajeHaParado");
         }
 
-        bool running_fast = Input.GetKey(KeyCode.LeftShift);
+        bool running_fast = Input.GetKeyDown(KeyCode.LeftShift);
         animator.SetBool("RunFast", running_fast);
         HandleMovement(horizontal, crouch, running_fast);
 

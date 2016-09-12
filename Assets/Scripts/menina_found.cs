@@ -20,8 +20,7 @@ public class menina_found : MonoBehaviour {
     {
         if (collider.tag == "Menina")
         {
-            //Destroy(collider.gameObject);
-
+            Destroy(collider.gameObject);
             gameObject.GetComponent<MainCharacterController>().menina_found = true;
         }
     }

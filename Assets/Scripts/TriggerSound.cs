@@ -39,9 +39,10 @@ public class TriggerSound : MonoBehaviour {
         {
             Debug.LogError("No audio manager in scene");
         }
-        meninas = GameObject.FindGameObjectWithTag("Meninas");
-        dialogBox.SetActive(!dialogBox.activeSelf);
-        
+        if(SceneManager.GetActiveScene().name == "EscenaMuseo")
+            meninas = GameObject.FindGameObjectWithTag("Meninas");
+
+        dialogBox.SetActive(!dialogBox.activeSelf);      
         
     }
 	
@@ -52,6 +53,8 @@ public class TriggerSound : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D otherObj)
     {
+        if (otherObj.tag != "Player")
+            return;
 
         if (psychedelic)
         {
@@ -62,7 +65,7 @@ public class TriggerSound : MonoBehaviour {
         {
             StartCoroutine(DisableDialogBox(secondsToCloseDialog));
         }
-        repeat = false;
+//        repeat = false;
         Debug.Log("TRIGGER ON!");
         if (!dialogBox.activeSelf)
         {

@@ -28,6 +28,7 @@ public class takeKey : MonoBehaviour {
         if (collider.tag == "key")
         {
             llaveCogida();
+            gameObject.GetComponent<MainCharacterController>().key_found = true;
             Destroy(collider.gameObject);
 
         }

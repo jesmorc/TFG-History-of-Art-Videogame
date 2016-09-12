@@ -6,10 +6,9 @@ public class dog_run : MonoBehaviour {
     public float speed = 4f;
     public float direction = 1;
     private Animator animator;
-    public bool run = false;
+    public bool run = true;
     private BoxCollider2D myBoxCollider2D;
     public GameObject character;
-    public GameObject limit_fall_death;
     public float aliveTime_afterRunning= 5f;
     private float minDistance = 6f;
     public LayerMask characterMask;
@@ -27,7 +26,7 @@ public class dog_run : MonoBehaviour {
     {
         if (character)
         {
-            if (Input.GetKeyDown("e") && Physics2D.OverlapCircle(transform.position, 2f, characterMask))
+            if (Input.GetKeyDown(KeyCode.E) && Physics2D.OverlapCircle(transform.position, 2f, characterMask))
             {
                 speak();
             }
@@ -54,21 +53,8 @@ public class dog_run : MonoBehaviour {
         animator.Play("Perro_corre_anim");
     }
 
-    public void Flip_and_change_direction()
-    {
-        direction = -direction;
-        myRigidbody.velocity = new Vector2(direction * speed, myRigidbody.velocity.y);
-        Flip();
-    }
 
-
-    public void Flip()
-    {
-        Vector3 myScale = transform.localScale;
-        myScale.x *= -1;
-        transform.localScale = myScale;
-    }
-
+    
     private void speak()
     {
         run = true;
@@ -79,7 +65,6 @@ public class dog_run : MonoBehaviour {
         if (character.GetComponent<MainCharacterController>().numer_bones >= numer_bones_this_level && character.GetComponent<MainCharacterController>().menina_found)
         {
             Debug.Log("Ok, you have the bones and the Menina of this level, follow me.");
-            limit_fall_death.SetActive(false);
         }
         else if (character.GetComponent<MainCharacterController>().numer_bones >= numer_bones_this_level && !character.GetComponent<MainCharacterController>().menina_found)
         {
