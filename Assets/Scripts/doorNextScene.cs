@@ -8,10 +8,17 @@ public class doorNextScene : MonoBehaviour {
     public string nameNextScene = "GameScene";
     public LayerMask characterMask;
 
+    private AudioManager audioManager;
+
     // Use this for initialization
     void Start()
     {
         character = GameObject.FindGameObjectsWithTag("Player")[0];
+        audioManager = AudioManager.instance;
+        if (audioManager == null)
+        {
+            Debug.LogError("Panic, no audio manager in scene");
+        }
     }
 
     // Update is called once per frame
@@ -34,5 +41,7 @@ public class doorNextScene : MonoBehaviour {
     void loadLevel()
     {
         SceneManager.LoadScene(nameNextScene);
+        audioManager.StopSound("RenacimientoMusic");
+
     }
 }

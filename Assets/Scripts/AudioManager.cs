@@ -112,6 +112,7 @@ public class AudioManager : MonoBehaviour
         
     }
 
+
     public void PlaySound(string _name)
     {
         for (int i = 0; i < sounds.Length; i++)

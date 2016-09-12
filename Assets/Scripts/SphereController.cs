@@ -9,7 +9,7 @@ public class SphereController : MonoBehaviour {
     public string spawnAbstractSoundName = "SpawnAbstract";
 
     private Rigidbody rigi;
-    private float groundRadius = 0.3f;
+    private float groundRadius = 0.4f;
     private float distToGround;
     private Collider colliderSphere;
     private AudioManager audioManager;

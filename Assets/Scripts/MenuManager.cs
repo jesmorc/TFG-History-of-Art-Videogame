@@ -24,13 +24,14 @@ public class MenuManager : MonoBehaviour {
             Debug.LogError("No audio manager found");
         }
 
-        audioManager.PlaySound(backgroundMusic);
+        //audioManager.PlaySound(backgroundMusic);
     }
 
 	public void StartGame()
     {
         audioManager.PlaySound(pressButtonSound);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //audioManager.StopSound(backgroundMusic);
     }
 
     public void QuitGame()

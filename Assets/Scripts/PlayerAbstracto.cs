@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class PlayerAbstracto : MonoBehaviour {
+public class PlayerAbstracto : MonoBehaviour
+{
 
-	private float inputDirection;  // X calue of our moveVector
-	private float verticalVelocity; // y value of moveVector
+    private float inputDirection;  // X calue of our moveVector
+    private float verticalVelocity; // y value of moveVector
 
-	private float speed = 5.0f;
-	private float gravity = 30.0f;
-	private float jumpForce = 10.0f;
-	private bool secondJumpAvail = false;
+    private float speed = 5.0f;
+    private float gravity = 30.0f;
+    private float jumpForce = 10.0f;
+    private bool secondJumpAvail = false;
     public int fallBoundary = -20;
 
     private Vector3 moveVector;
-	private CharacterController controller;
+    private Vector3 lastMotion;
+    private CharacterController controller;
     private AudioManager audioManager;
     public string deathSoundName = "DeathVoice";
     public string spawnAbstractSoundName = "SpawnAbstract";
@@ -24,8 +27,9 @@ public class PlayerAbstracto : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
-		controller = GetComponent<CharacterController> ();
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
 
         audioManager = AudioManager.instance;
         if (audioManager == null)
@@ -33,45 +37,50 @@ public class PlayerAbstracto : MonoBehaviour {
             Debug.LogError("Panic, no audio manager in scene");
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		IsControllerGrounded ();
-		moveVector = Vector3.zero;
-		inputDirection = Input.GetAxis ("Horizontal") * speed;
-        moveVector.x = inputDirection;
+
+    // Update is called once per frame
+    void Update()
+    {
+        IsControllerGrounded();
+        moveVector = Vector3.zero;
+        inputDirection = Input.GetAxis("Horizontal") * speed;
+        
 
 
-        if (IsControllerGrounded()) {
-			verticalVelocity = 0;
-
-			if(Input.GetKeyDown(KeyCode.Space)) {
-				verticalVelocity = jumpForce;
-				secondJumpAvail = true;
-			}
-
-			
-
-		} else {
-			
-			if(Input.GetKeyDown(KeyCode.Space)) {
-
-				if (secondJumpAvail) {
-					verticalVelocity = jumpForce;
-					secondJumpAvail = false;
-				}
-
-			}
-
-			verticalVelocity -= gravity * Time.deltaTime;
-		}
-
-        if (transform.position.y <= fallBoundary)
+        if (IsControllerGrounded())
         {
-            transform.position = GameMaster.gm.transform.GetChild(0).position;
-            audioManager.PlaySound(spawnAbstractSoundName);
+            verticalVelocity = 0;
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                verticalVelocity = jumpForce;
+                secondJumpAvail = true;
+            }
+
+            moveVector.x = inputDirection;
 
         }
+        else
+        {
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+
+                if (secondJumpAvail)
+                {
+                    verticalVelocity = jumpForce;
+                    secondJumpAvail = false;
+                }
+
+            }
+
+            verticalVelocity -= gravity * Time.deltaTime;
+            
+            moveVector.x = lastMotion.x;
+          
+        }
+
+        
         /*
         GameObject[] pepe = GameObject.FindGameObjectsWithTag("Triggersito");
 
@@ -90,71 +99,92 @@ public class PlayerAbstracto : MonoBehaviour {
         */
 
         moveVector.y = verticalVelocity;
-		controller.Move (moveVector * Time.deltaTime);
+        controller.Move(moveVector * Time.deltaTime);
+        lastMotion = moveVector;
 
-	}
+        if (transform.position.y <= fallBoundary)
+        {
+            transform.position = GameMaster.gm.transform.GetChild(0).position;
+            audioManager.PlaySound(spawnAbstractSoundName);
 
-   
+        }
 
-    private bool IsControllerGrounded(){
-		Vector3 leftRayStart;
-		Vector3 rightRayStart;
-
-
-		leftRayStart = controller.bounds.center;
-		rightRayStart = controller.bounds.center;
-	
-
-		leftRayStart.x -= controller.bounds.extents.x;
-		rightRayStart.x += controller.bounds.extents.x;
-
-		Debug.DrawRay (leftRayStart, Vector3.down, Color.red);
-		Debug.DrawRay (rightRayStart, Vector3.down, Color.green);
+    }
 
 
-		if (Physics.Raycast (leftRayStart, Vector3.down, (controller.height / 2) + 0.1f)) {
-			return true;
-		}
 
-		if (Physics.Raycast (rightRayStart, Vector3.down, (controller.height / 2) + 0.1f)) {
-			return true;
-		}
+    private bool IsControllerGrounded()
+    {
+        Vector3 leftRayStart;
+        Vector3 rightRayStart;
 
-		return false;
-	}
 
-	private void OnControllerColliderHit(ControllerColliderHit hit){
-		if (controller.collisionFlags == CollisionFlags.Sides) {
-			
-			if (Input.GetKeyDown (KeyCode.Space)) {
-				Debug.DrawRay (hit.point, hit.normal, Color.red, 2.0f);
-				moveVector = hit.normal * speed;
-				verticalVelocity = jumpForce;
-				secondJumpAvail = true;
-			}
-		}
+        leftRayStart = controller.bounds.center;
+        rightRayStart = controller.bounds.center;
 
-		//Collectables
-		switch(hit.gameObject.tag){
-		case "Coin":
-			//LevelManager.Instance.CollectCoin ();
-			Destroy (hit.gameObject);
-			break;
-		case "JumpPad":
-			verticalVelocity = jumpForce * 2;
-			secondJumpAvail = true;
-			break;
-		case "Teleport":
-			transform.position = hit.transform.GetChild (0).position;
-			break;
-		case "Winbox":
-			//LevelManager.Instance.Win ();
-			break;
-        case "FallingPlatform":
+
+        leftRayStart.x -= controller.bounds.extents.x;
+        rightRayStart.x += controller.bounds.extents.x;
+
+        Debug.DrawRay(leftRayStart, Vector3.down, Color.red);
+        Debug.DrawRay(rightRayStart, Vector3.down, Color.green);
+
+
+        if (Physics.Raycast(leftRayStart, Vector3.down, (controller.height / 2) + 0.1f))
+        {
+            return true;
+        }
+
+        if (Physics.Raycast(rightRayStart, Vector3.down, (controller.height / 2) + 0.1f))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (controller.collisionFlags == CollisionFlags.Sides)
+        {
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Debug.DrawRay(hit.point, hit.normal, Color.red, 2.0f);
+                moveVector = hit.normal * speed;
+                verticalVelocity = jumpForce;
+                secondJumpAvail = true;
+            }
+        }
+        Debug.Log("NONONONONONONO" + hit.gameObject.tag);
+        //Collectables
+        switch (hit.gameObject.tag)
+        {
+            case "Coin":
+                //LevelManager.Instance.CollectCoin ();
+                Destroy(hit.gameObject);
+                break;
+            case "JumpPad":
+                verticalVelocity = jumpForce * 2;
+                secondJumpAvail = true;
+                break;
+            case "Teleport":
+                transform.position = hit.transform.GetChild(0).position;
+                break;
+            case "Winbox":
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                audioManager.StopSound("AbstractMusic");
+                break;
+            case "FallingPlatform":
                 hit.gameObject.GetComponent<PlatformFall>().Fall();
-            break;
-		default:
-			break;
-		}
-	}
+                break;
+            case "bone":
+                Destroy(hit.gameObject);
+                Debug.Log("NONONONONONONO");
+                GameMaster.gm.player2DPrefab.GetComponent<MainCharacterController>().takeBone();
+                break;
+            default:
+                break;
+        }
+    }
 }

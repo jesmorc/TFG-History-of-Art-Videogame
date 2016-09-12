@@ -1,0 +1,404 @@
+fileFormatVersion: 2
+guid: b1c5f1d5dc2b5ba40ac99cee3a79822b
+timeCreated: 1473530664
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: character - cubism_original_0
+    21300002: character - cubism_original_1
+    21300004: character - cubism_original_2
+    21300006: character - cubism_original_3
+    21300008: character - cubism_original_4
+    21300010: character - cubism_original_5
+    21300012: character - cubism_original_6
+    21300014: character - cubism_original_7
+    21300016: character - cubism_original_8
+    21300018: character - cubism_original_9
+    21300020: character - cubism_original_10
+    21300022: character - cubism_original_11
+    21300024: character - cubism_original_12
+    21300026: character - cubism_original_13
+    21300028: character - cubism_original_14
+    21300030: character - cubism_original_15
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: character - cubism_original_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 430
+        width: 212
+        height: 216
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -73, y: 108}
+        - {x: -106, y: 94}
+        - {x: -106, y: 33}
+        - {x: -104, y: 32}
+        - {x: -88, y: 19}
+        - {x: -84, y: 20}
+        - {x: -80, y: 23}
+        - {x: -82, y: 21}
+        - {x: -82, y: 19}
+        - {x: -106, y: 0}
+        - {x: -106, y: -72}
+        - {x: -105, y: -77}
+        - {x: -18, y: -108}
+        - {x: 54, y: -108}
+        - {x: 106, y: -17}
+        - {x: 106, y: 91}
+        - {x: 99, y: 108}
+    - name: character - cubism_original_1
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 490
+        width: 86
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -20, y: 56}
+        - {x: -43, y: 22}
+        - {x: -43, y: 4}
+        - {x: -39, y: -10}
+        - {x: -7, y: -56}
+        - {x: 31, y: -56}
+        - {x: 40, y: -51}
+        - {x: 43, y: -20}
+        - {x: 43, y: 17}
+        - {x: 15, y: 56}
+    - name: character - cubism_original_2
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 503
+        width: 62
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 11, y: 63}
+        - {x: -11, y: 63}
+        - {x: -15, y: 62}
+        - {x: -25, y: 37}
+        - {x: -31, y: -5}
+        - {x: -31, y: -50}
+        - {x: -24, y: -63}
+        - {x: 13, y: -63}
+        - {x: 28, y: -45}
+        - {x: 31, y: -13}
+        - {x: 31, y: 49}
+    - name: character - cubism_original_3
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 504
+        width: 55
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 59.5}
+        - {x: -27.5, y: 45.5}
+        - {x: -27.5, y: -59.5}
+        - {x: 18.5, y: -59.5}
+        - {x: 27.5, y: -47.5}
+        - {x: 27.5, y: 49.5}
+        - {x: 4.5, y: 59.5}
+    - name: character - cubism_original_4
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 423
+        width: 76
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8, y: 34.5}
+        - {x: -28, y: 34.5}
+        - {x: -38, y: 32.5}
+        - {x: -38, y: -34.5}
+        - {x: 32, y: -34.5}
+        - {x: 38, y: -31.5}
+        - {x: 38, y: -8.5}
+        - {x: 11, y: 31.5}
+    - name: character - cubism_original_5
+      rect:
+        serializedVersion: 2
+        x: 524
+        y: 415
+        width: 61
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 8.5, y: 25}
+        - {x: -25.5, y: 25}
+        - {x: -30.5, y: 22}
+        - {x: -30.5, y: -7}
+        - {x: -13.5, y: -25}
+        - {x: 16.5, y: -25}
+        - {x: 30.5, y: -13}
+        - {x: 30.5, y: 8}
+        - {x: 17.5, y: 23}
+    - name: character - cubism_original_6
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 418
+        width: 81
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 35}
+        - {x: -40.5, y: 26}
+        - {x: -40.5, y: -24}
+        - {x: -23.5, y: -35}
+        - {x: 21.5, y: -35}
+        - {x: 40.5, y: -23}
+        - {x: 40.5, y: 13}
+        - {x: 8.5, y: 35}
+    - name: character - cubism_original_7
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 415
+        width: 60
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 24}
+        - {x: -30, y: 23}
+        - {x: -30, y: -12}
+        - {x: -18, y: -24}
+        - {x: 28, y: -24}
+        - {x: 30, y: -18}
+        - {x: 30, y: 17}
+        - {x: 17, y: 24}
+    - name: character - cubism_original_8
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 308
+        width: 86
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 9, y: 49}
+        - {x: -43, y: -16}
+        - {x: -43, y: -44}
+        - {x: -41, y: -49}
+        - {x: -6, y: -49}
+        - {x: 4, y: -44}
+        - {x: 43, y: 10}
+        - {x: 43, y: 39}
+        - {x: 27, y: 49}
+    - name: character - cubism_original_9
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 168
+        width: 93
+        height: 244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39.5, y: -122}
+        - {x: -39.5, y: -120}
+        - {x: -42.5, y: -119}
+        - {x: -44.5, y: -122}
+      - - {x: -36.5, y: 122}
+        - {x: -46.5, y: 69}
+        - {x: -46.5, y: -122}
+        - {x: 26.5, y: -122}
+        - {x: 46.5, y: -116}
+        - {x: 46.5, y: 122}
+    - name: character - cubism_original_10
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 168
+        width: 106
+        height: 243
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 33, y: 121.5}
+        - {x: -15, y: 121.5}
+        - {x: -53, y: 80.5}
+        - {x: -53, y: -103.5}
+        - {x: -12, y: -121.5}
+        - {x: 40, y: -121.5}
+        - {x: 53, y: -105.5}
+        - {x: 53, y: 41.5}
+        - {x: 49, y: 95.5}
+    - name: character - cubism_original_11
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 284
+        width: 49
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -24.5, y: 62}
+        - {x: -24.5, y: -49}
+        - {x: -12.5, y: -62}
+        - {x: 24.5, y: -62}
+        - {x: 24.5, y: 47}
+        - {x: 12.5, y: 62}
+    - name: character - cubism_original_12
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 196
+        width: 63
+        height: 107
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 3.5, y: 53.5}
+        - {x: -15.5, y: 31.5}
+        - {x: -31.5, y: -2.5}
+        - {x: -31.5, y: -37.5}
+        - {x: -20.5, y: -53.5}
+        - {x: 12.5, y: -53.5}
+        - {x: 31.5, y: -39.5}
+        - {x: 31.5, y: 49.5}
+        - {x: 21.5, y: 53.5}
+    - name: character - cubism_original_13
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 199
+        width: 83
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -10.5, y: 41}
+        - {x: -41.5, y: 41}
+        - {x: -41.5, y: 8}
+        - {x: -40.5, y: 5}
+        - {x: -6.5, y: -37}
+        - {x: 6.5, y: -41}
+        - {x: 34.5, y: -41}
+        - {x: 39.5, y: -26}
+        - {x: 41.5, y: -12}
+        - {x: 41.5, y: 19}
+    - name: character - cubism_original_14
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 122
+        width: 164
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: 28.5}
+        - {x: -82, y: 27.5}
+        - {x: -82, y: -28.5}
+        - {x: 69, y: -28.5}
+        - {x: 82, y: 3.5}
+        - {x: 82, y: 26.5}
+        - {x: 79, y: 28.5}
+      - - {x: 41, y: -18.5}
+        - {x: 46, y: -20.5}
+        - {x: 49, y: -19.5}
+        - {x: 49, y: -14.5}
+        - {x: 47, y: -9.5}
+        - {x: 42, y: -9.5}
+        - {x: 38, y: -11.5}
+        - {x: 38, y: -14.5}
+    - name: character - cubism_original_15
+      rect:
+        serializedVersion: 2
+        x: 596
+        y: 128
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -9, y: 29}
+        - {x: -26, y: 25}
+        - {x: -28, y: 19}
+        - {x: -28, y: -27}
+        - {x: -18, y: -29}
+        - {x: 20, y: -29}
+        - {x: 28, y: -9}
+        - {x: 28, y: 17}
+        - {x: 19, y: 29}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -181,7 +181,7 @@ public class MainCharacterController : MonoBehaviour
         {
             //int randomSound = (int)Random.Range(0, audios.Length);
             //audios[randomSound].Play();
-            if (SceneManager.GetActiveScene().name != "EscenaXilografia")
+            if (SceneManager.GetActiveScene().name != "EscenaXilografia" || SceneManager.GetActiveScene().name != "EscenaAbstracta")
             {
                 audioManager.PlaySound("Attack");
                 attack();
