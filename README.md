@@ -4,3 +4,8 @@ A videogame about history of art made for the final degree's project of Computer
 Made by:
 - Jesús García Godoy
 - Samuel Carmona Soria
+
+
+
+.Exe link:
+https://drive.google.com/open?id=0BxnBz1lWkfGPSVU0WF9UemhNXzg 
